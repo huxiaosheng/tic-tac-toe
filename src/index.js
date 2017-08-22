@@ -96,18 +96,23 @@ class Game extends React.Component {
     constructor() {
         super();
         this.state = {
+            
             history: [{
-                squares: Array(9).fill(null),
+                squares: Array(9).fill(null),       //存储历史
             }],
             stepNumber: 0,
-            xIsNext: true,
+            xIsNext: true,                      //下一个选手
 
         }
     }
 
+    /**
+     * 点击button 时间
+     * @param {*} i 
+     */
     handleClick(i) {
         const history = this.state.history.slice(0, this.state.stepNumber + 1);
-        const current = history[history.length - 1];
+        const current = history[history.length - 1];    //当前
         const squares = current.squares.slice();
         if (calculateWinner(squares) || squares[i]) {
             return;
